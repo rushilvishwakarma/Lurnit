@@ -1,0 +1,110 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 9% 4%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 9% 4%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 240 9% 4%;
+    --primary: 240 6% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 9%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 9% 4%;
+    --radius: 0.5rem;
+  
+    --modal-overlay-bg: hsla(0, 0%, 0%, 0.5);
+    --modal-content-bg: rgba(0, 0, 0, 0.9);
+    --modal-content-padding: 0;
+    --modal-content-border: none;
+    --modal-content-radius: 0;
+    --modal-content-shadow: none;
+    --modal-image-max-width: 100%;
+    --modal-image-max-height: 100%;
+    --modal-image-object-fit: contain;
+  }
+  
+  .dark {
+    --background: 240 9% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 9% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 9% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 6% 9%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 240 5% 84%;
+  }
+  
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+
+  .sidebar {
+    z-index: 20; /* Ensure the sidebar is above other content */
+    position: relative;
+  }
+  
+  .ReactModal__Overlay {
+    z-index: 9999; /* Ensure the modal overlay is on top */
+    background: hsla(0, 0%, 0%, 0.5) !important; /* Transparent background */
+  }
+  
+  .ReactModal__Content {
+    position: fixed;
+    background: rgba(0, 0, 0, 0) !important; /* Transparent background */
+    left: 90px; /* Adjust this value based on the sidebar width */
+  }
+  
+  .custom-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-modal-content img {
+    
+    max-width: 100%; /* Adjust max-width as needed */
+    max-height: 80vh; /* Adjust max-height to control the height relative to viewport */
+    width: auto; /* Ensure the aspect ratio is maintained */
+    height: auto; /* Ensure the aspect ratio is maintained */
+  }
+  

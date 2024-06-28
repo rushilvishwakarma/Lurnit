@@ -1,0 +1,43 @@
+{
+    "badge": "Lectures done right",
+    "heading": "Video Lectures",
+    "description": "Play me in the summer, Play me in the order, Any order. We won em I got gotta.",
+    "featureCards": [
+      {
+        "image": "/video-thumbnail/mastering-chemistry.jpeg",
+        "caption": "Mastering Organic Chemistry",
+        "href": "/",
+        "description": "Learn the intricacies of organic reactions and mechanisms in our detailed video lectures."
+      },
+      {
+        "image": "/video-thumbnail/understanding-electromagnetism.jpeg",
+        "caption": "Understanding Electromagnetism",
+        "href": "/",
+        "description": "Deep dive into the concepts of electromagnetism with our expert-led video sessions."
+      },
+      {
+        "image": "/video-thumbnail/complex-number-theory.jpeg",
+        "caption": "Complex Number Theory",
+        "href": "/",
+        "description": "Explore the world of complex numbers and their applications in our comprehensive video lectures."
+      },
+      {
+        "image": "/video-thumbnail/molecular-biology-insights.jpeg",
+        "caption": "Molecular Biology Insights",
+        "href": "/",
+        "description": "Unravel the complexities of molecular biology with our engaging and detailed video tutorials."
+      },
+      {
+        "image": "/video-thumbnail/thermodynamics-simplified.jpeg",
+        "caption": "Thermodynamics Simplified",
+        "href": "/",
+        "description": "Gain a thorough understanding of thermodynamics principles with our easy-to-follow video lectures."
+      },
+      {
+        "image": "/video-thumbnail/advanced-calculus-techniques.jpeg",
+        "caption": "Advanced Calculus Techniques",
+        "href": "/",
+        "description": "Master advanced calculus topics with our step-by-step video guides and expert tips."
+      }
+    ]
+  }
