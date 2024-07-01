@@ -16,7 +16,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="w-full py-10 lg:py-20 bg-zinc-200 dark:bg-muted/10 text-foreground">
+    <footer className="w-full py-10 lg:py-20 bg-zinc-100 dark:bg-muted/10 text-foreground">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="px-7 flex flex-col gap-6 items-start">
