@@ -9,6 +9,7 @@ import {
   MinimalCardTitle,
 } from "@/components/ui/minimal-card";
 
+
 const FlipWordsDemo = () => {
   const words = ["better", "smarter", "faster"];
 
@@ -48,6 +49,7 @@ export default function HomePage() {
   return (
     <ContentLayout title="Home">
       {/* Start of Announcement Banner */}
+
       <div className="flex justify-left px-6">
         <a
           className="inline-flex items-center gap-x-2 border text-sm p-1 ps-3 rounded-full transition"
@@ -79,9 +81,9 @@ export default function HomePage() {
         <div className="container mx-auto flex flex-col gap-14">
           <div className="w-full">
             <div className="flex gap-10 pt-12 flex-col w-full">
-              <div className="grid grid-cols-2 items-start lg:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                 <div className="flex flex-row gap-6 w-full items-start">
-                  <Check className="w-4 h-4 mt-2 text-primary" />
+                  <Check className="w-5 h-5 mt-1 text-primary" />
                   <div className="flex flex-col gap-1">
                     <p>Easy to use</p>
                     <p className="text-muted-foreground text-sm">
@@ -90,7 +92,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex flex-row gap-6 items-start">
-                  <Check className="w-4 h-4 mt-2 text-primary" />
+                  <Check className="w-5 h-5 mt-1 text-primary" />
                   <div className="flex flex-col gap-1">
                     <p>Fast and reliable</p>
                     <p className="text-muted-foreground text-sm">
@@ -99,7 +101,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex flex-row gap-6 items-start">
-                  <Check className="w-4 h-4 mt-2 text-primary" />
+                  <Check className="w-5 h-5 mt-1 text-primary" />
                   <div className="flex flex-col gap-1">
                     <p>Beautiful and modern</p>
                     <p className="text-muted-foreground text-sm">

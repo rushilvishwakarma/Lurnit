@@ -16,7 +16,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="w-full py-10 lg:py-20 bg-zinc-100 dark:bg-muted/10 text-foreground">
+    <footer className="w-full py-10 lg:py-20 bg-secondary/90 dark:bg-muted/10 text-foreground">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="px-7 flex flex-col gap-6 items-start">
@@ -30,8 +30,8 @@ export const Footer = () => {
             </div>
             <div className="flex flex-col gap-4 md:flex-row md:gap-20">
               <div className="flex flex-col text-sm leading-relaxed tracking-tight text-foreground/75 text-left">
-                <p>Maharashtra</p>
-                <p>Mumbai, India</p>
+                <p>Pune, Maharashtra</p>
+                <p>India</p>
               </div>
             </div>
           </div>

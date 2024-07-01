@@ -18,7 +18,7 @@ export default function HomePage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Previous Year Questions</BreadcrumbPage>
+            <BreadcrumbPage>PYQs</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
