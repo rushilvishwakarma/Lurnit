@@ -1,17 +1,20 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { MoveRight } from "lucide-react";
 import { ContentLayout } from "@/components/panel/content-layout";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Check } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import {
+  MinimalCard,
+  MinimalCardDescription,
+  MinimalCardImage,
+  MinimalCardTitle,
+} from "@/components/ui/minimal-card";
 
 const FlipWordsDemo = () => {
   const words = ["better", "smarter", "faster"];
 
   return (
-    <div className="flex justify-left items-left px-7">
-      <div className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-600 dark:text-neutral-400 pt-20">
+    <div className="flex justify-left items-left px-7 pb-6">
+      <div className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-600 dark:text-neutral-400 pt-10">
         Lurn
         <FlipWords words={words} /> <br />
         with this Learning Platform
@@ -20,12 +23,60 @@ const FlipWordsDemo = () => {
   );
 };
 
+const cards = [
+  {
+    title: "Practice PYQs",
+    description: "Practice previous year questions.",
+    href: "/previous-year-questions",
+    imgSrc: "https://cdn.pixabay.com/photo/2023/03/13/04/25/buildings-7848348_1280.jpg",
+  },
+  {
+    title: "Check Exam Updates",
+    description: "Stay updated with the latest exam news.",
+    href: "/exam-updates",
+    imgSrc: "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+  },
+  {
+    title: "Practice Test Questions",
+    description: "Practice chemistry test questions.",
+    href: "/chemistry",
+    imgSrc: "https://cdn.pixabay.com/photo/2014/01/21/19/51/crocus-249359_1280.jpg",
+  },
+];
+
 export default function HomePage() {
   return (
     <ContentLayout title="Home">
+      {/* Start of Announcement Banner */}
+      <div className="flex justify-left px-6">
+        <a
+          className="inline-flex items-center gap-x-2 border text-sm p-1 ps-3 rounded-full transition"
+          href="#"
+        >
+          Join the waitlist
+          <span className="py-1.5 px-2.5 inline-flex justify-center items-center gap-x-2 rounded-full bg-muted-foreground/15 font-semibold text-sm">
+            <svg
+              className="flex-shrink-0 w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+      {/* End Announcement Banner */}
+
       <FlipWordsDemo />
-      <div className="w-full pb-20 lg:pb-20 pt-5">
-        <div className="container mx-auto flex flex-col gap-14 px-7">
+      <div className="w-full pb-20 lg:pb-20">
+        <div className="container mx-auto flex flex-col gap-14">
           <div className="w-full">
             <div className="flex gap-10 pt-12 flex-col w-full">
               <div className="grid grid-cols-2 items-start lg:grid-cols-3 gap-10">
@@ -61,27 +112,24 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-7 px-7">
-        <Link href={`/previous-year-questions`}>
-          <div className="flex flex-col gap-2 hover:opacity-75 cursor-pointer">
-            <img src="https://svgshare.com/i/17Vy.svg" alt="Image" className="bg-muted rounded-md aspect-square mb-4" />
-            <h3 className="text-base tracking-tight">Practice PYQs</h3>
-          </div>
-        </Link>
-
-        <Link href={`/exam-updates`}>
-          <div className="flex flex-col gap-2 hover:opacity-75 cursor-pointer">
-            <img src="https://svgshare.com/i/17Ve.svg" alt="Image" className="bg-muted rounded-md aspect-square mb-4" />
-            <h3 className="text-base tracking-tight">Check Exam Updates</h3>
-          </div>
-        </Link>
-
-        <Link href={`/chemistry`}>
-          <div className="flex flex-col gap-2 hover:opacity-75 cursor-pointer">
-            <img src="https://svgshare.com/i/17V6.svg" alt="Image" className="bg-muted rounded-md aspect-square mb-4" />
-            <h3 className="text-base tracking-tight">Practice Test Questions</h3>
-          </div>
-        </Link>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7 w-full px-4 lg:px-7 pb-20">
+        {cards.map((card) => (
+          <Link key={card.title} href={card.href}>
+            <div className="flex flex-col h-full">
+              <MinimalCard className="flex flex-col h-full">
+                <MinimalCardImage 
+                  src={card.imgSrc} 
+                  alt={card.title} 
+                  className="bg-muted rounded-md mb-4 object-cover w-full h-40" 
+                />
+                <div className="flex flex-col flex-grow px-2 pb-2">
+                  <MinimalCardTitle className="text-lg font-semibold pb-3">{card.title}</MinimalCardTitle>
+                  <MinimalCardDescription className="text-sm">{card.description}</MinimalCardDescription>
+                </div>
+              </MinimalCard>
+            </div>
+          </Link>
+        ))}
       </div>
     </ContentLayout>
   );

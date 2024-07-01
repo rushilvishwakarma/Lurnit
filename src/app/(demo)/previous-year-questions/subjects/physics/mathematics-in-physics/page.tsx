@@ -54,8 +54,8 @@ const correctAnswer = 'option2';
 
 export default function HomePage() {
   const imageSrc1 = "/placeholder.png";
-  const imageSrc2 = "/video-thumbnails/advanced-calculus-techniques.jpeg";
-  const imageSrc3 = "/video-thumbnails/molecular-biology-insights.jpeg";
+  const imageSrc2 = "/video-thumbnail/advanced-calculus-techniques.jpeg";
+  const imageSrc3 = "/video-thumbnail/molecular-biology-insights.jpeg";
   const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [totalQuestions, setTotalQuestions] = useState(1); // Assuming at least one question
@@ -128,7 +128,7 @@ export default function HomePage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbLink asChild>
-            <Link href="/subjects">Subjects</Link>
+            <Link href="/previous-year-questions/subjects/">Subjects</Link>
           </BreadcrumbLink>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

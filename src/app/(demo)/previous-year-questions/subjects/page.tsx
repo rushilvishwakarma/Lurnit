@@ -34,7 +34,7 @@ export default function HomePage() {
           <TabsList className="grid w-full grid-cols-4 justify-center">
             <TabsTrigger value="physics">Physics</TabsTrigger>
             <TabsTrigger value="chemistry">Chemistry</TabsTrigger>
-            <TabsTrigger value="mathematics">Mathematics</TabsTrigger>
+            <TabsTrigger value="mathematics">Maths</TabsTrigger>
             <TabsTrigger value="biology">Biology</TabsTrigger>
           </TabsList>
 

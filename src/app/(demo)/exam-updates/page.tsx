@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { ContentLayout } from "@/components/panel/content-layout";
 import {
@@ -35,7 +33,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import exams from './exam-update-table.json'; // Importing the JSON file directly
+import exams from './exam-update-table.json';
 
 export default function ExamUpdates() {
   return (
@@ -53,8 +51,8 @@ export default function ExamUpdates() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="w-full">
-        <div className="flex justify-left items-left pt-20 pb-10">
+      <div className="w-full px-2 sm:px-4">
+        <div className="flex justify-start items-left pt-10 sm:pt-20 pb-5 sm:pb-10">
           <div className="text-3xl sm:text-4xl md:text-5xl font-normal">
             Exam Updates
           </div>
@@ -64,17 +62,23 @@ export default function ExamUpdates() {
             <CardTitle>Exams</CardTitle>
             <CardDescription>Upcoming exams and their status.</CardDescription>
           </CardHeader>
-          <CardContent>
-            <Table>
+          <CardContent className="px-2 sm:px-4">
+            <Table className="w-full">
               <TableHeader>
                 <TableRow>
-                  <TableHead className="hidden w-[100px] sm:table-cell">
+                  <TableHead className="hidden sm:table-cell">
                     <span className="sr-only">Image</span>
                   </TableHead>
-                  <TableHead>Exam</TableHead>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>
+                  <TableHead className="hidden sm:table-cell">
+                    Exam
+                  </TableHead>
+                  <TableHead className="hidden sm:table-cell">
+                    Date
+                  </TableHead>
+                  <TableHead className="hidden sm:table-cell">
+                    Status
+                  </TableHead>
+                  <TableHead className="hidden sm:table-cell">
                     <span className="sr-only">Actions</span>
                   </TableHead>
                 </TableRow>
@@ -82,18 +86,39 @@ export default function ExamUpdates() {
               <TableBody>
                 {exams.map((exam, index) => (
                   <TableRow key={index}>
-                    <TableCell className="hidden sm:table-cell">
+                    <TableCell className="w-auto sm:w-[64px] flex items-center justify-center sm:table-cell">
                       <img
                         src={exam.image}
-                        alt="Exam image"
-                        className="aspect-square rounded-md object-cover"
+                        alt={`${exam.exam} image`}
+                        className="aspect-square rounded-md object-cover mx-1 my-5"
                         height="64"
                         width="64"
+                        loading="lazy"
                       />
                     </TableCell>
-                    <TableCell className="font-medium">{exam.exam}</TableCell>
-                    <TableCell>{exam.date}</TableCell>
-                    <TableCell>
+                    <TableCell className="font-medium py-3">
+                      <div>{exam.exam}</div>
+                      <div className="block sm:hidden text-sm text-muted-foreground mt-2">
+                        <div className="mb-2">{exam.date}</div>
+                        <div>
+                          <Badge
+                            variant={
+                              exam.status === "Pending"
+                                ? "secondary"
+                                : exam.status === "Finished"
+                                ? "outline"
+                                : "default"
+                            }
+                          >
+                            {exam.status}
+                          </Badge>
+                        </div>
+                      </div>
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell py-3">
+                      {exam.date}
+                    </TableCell>
+                    <TableCell className="hidden sm:table-cell py-3">
                       <Badge
                         variant={
                           exam.status === "Pending"
@@ -106,7 +131,7 @@ export default function ExamUpdates() {
                         {exam.status}
                       </Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="flex justify-end items-center py-3">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button aria-haspopup="true" size="icon" variant="ghost">
