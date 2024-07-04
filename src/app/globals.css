@@ -3,39 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: 74 56% 98%;
-  --foreground: 74 56% 3%;
-  --muted: 44 34% 85%;
-  --muted-foreground: 44 8% 34%;
-  --popover: 74 56% 97%;
-  --popover-foreground: 74 56% 2%;
-  --card: 79 56% 97%;
-  --card-foreground: 74 56% 2%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --primary: 57.37 100% 45.23%;
-  --primary-foreground: 74 53% 5%;
-  --secondary: 44 53% 85%;
-  --secondary-foreground: 44 53% 25%;
-  --accent: 104 53% 85%;
-  --accent-foreground: 104 53% 5%;
-  --destructive: 2 81% 25%;
-  --destructive-foreground: 2 81% 85%;
-  --ring: 74 53% 85%;
+  --background: 40 90% 96%;
+  --foreground: 187 100% 19%;
+  --muted: 40 12% 90%;
+  --muted-foreground: 40 12% 30%;
+  --popover: 40 90% 93%;
+  --popover-foreground: 187 100% 9%;
+  --card: 40 90% 94%;
+  --card-foreground: 187 100% 14%;
+  --border: 40 80% 91%;
+  --input: 40 80% 88%;
+  --primary: 187 100% 34%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 187 30% 75%;
+  --secondary-foreground: 187 30% 15%;
+  --accent: 40 90% 81%;
+  --accent-foreground: 40 90% 21%;
+  --destructive: 7 82% 38%;
+  --destructive-foreground: 7 82% 98%;
+  --ring: 187 100% 34%;
   --radius: 1.5rem;
-
-  --modal-overlay-bg: hsla(0, 0%, 0%, 0.5);
-  --modal-content-bg: rgba(0, 0, 0, 0.9);
-  --modal-content-padding: 0;
-  --modal-content-border: none;
-  --modal-content-radius: 0;
-  --modal-content-shadow: none;
-  --modal-image-max-width: 100%;
-  --modal-image-max-height: 100%;
-  --modal-image-object-fit: contain;
-
-  /* Theme color for Chrome and Safari */
-  --theme-color: #57a3f3;
+  --new: 40 100% 99.47%;
 }
 
 .dark {
@@ -77,41 +65,71 @@
   position: relative;
 }
 
+
+.katex-html {
+  display: none; /* Hide HTML rendering */
+}
+
+mjx-container.MathJax {
+  pointer-events: none;
+}
+
+* {
+  user-select: none;
+}
+
+.mathjax-container.plain-text {
+  font-weight: normal;
+  font-family: sans-serif; /* Adjust the font family as needed */
+}
+
+/* Image Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  
+}
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
 .ReactModal__Overlay {
   z-index: 9999; /* Ensure the modal overlay is on top */
-  backdrop-filter: blur(20px); /* Apply backdrop blur */
-  -webkit-backdrop-filter: blur(20px); /* Vendor prefix for Safari */
+  backdrop-filter: blur(50px); /* Apply backdrop blur */
+  -webkit-backdrop-filter: blur(50px); /* Vendor prefix for Safari */
   background: var(--modal-overlay-bg) !important;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
-
 .ReactModal__Content {
-  background: var(--modal-overlay-bg) !important;
+  background: transparent !important;
 }
-
-.ReactModal__Content {
-  position: fixed;
-  z-index: 10001; /* Ensure it's above the overlay */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background: var(--modal-content-bg); /* Background of modal content */
-  border-radius: var(--modal-content-radius);
-  box-shadow: var(--modal-content-shadow);
-  padding: 0; /* Remove padding to prevent extra space */
-  overflow: hidden; /* Prevent content overflow */
-  max-width: 90vw;
-  max-height: 85vh; /* Limit the max height to 80% of viewport height */
-  margin: auto; /* Center the modal content */
-}
-
-/* Theme color for Chrome and Safari */
-@supports (color-scheme: light dark) {
-  :root {
-    color-scheme: light dark;
-    --theme-color: #57a3f3;
-  }
+/* Image Styles */
+.modal-content img {
+  display: block;
+  width: 100%; /* Ensure image takes up the full width of the modal */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 80vh; /* Limit height to viewport height */
+  object-fit: contain; /* Ensure image is not cropped */
 }

@@ -16,6 +16,7 @@ const config = {
       screens: {
         "2xl": "1400px"
       }
+
     },
     extend: {
       colors: {
@@ -51,7 +52,8 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))"
-        }
+        },
+        page: 'hsl(40, 100%, 99.47%)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +86,7 @@ const config = {
       }
     }
   },
+
   plugins: [require("tailwindcss-animate")]
 } satisfies Config;
 

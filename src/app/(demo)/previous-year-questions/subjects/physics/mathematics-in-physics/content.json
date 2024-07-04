@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "questionText": "In the study of calculus, \\( 3x^3 - 5x + 2 \\) it is essential to understand the fundamental concepts of integration and differentiation. Consider the following integral:\n\n \\( \\int_{0}^{2} (3x^3 - 5x + 2) \\, dx. \\)\n Calculate this integral to find the area under the curve defined by the function \\( 3x^3 - 5x + 2 \\) from \\( x = 0 \\) to \\( x = 2. \\) Next, examine the following differential equation: \\( \\frac{dy}{dx} = 2x \\cdot e^x. \\) Solve this differential equation to find the general solution. The solution involves integrating a product of a polynomial and an exponential function, which can be approached using integration by parts. Also, consider the function \\( f(x) = \\sin(x) \\cdot \\cos(x) \\). Find the derivative of this function using the product rule. The product rule states that if \\( u(x) \\) and \\( v(x) \\) are functions of \\( x \\), then the derivative of \\( u(x) \\cdot v(x) \\) is given by \\( u'(x) \\cdot v(x) + u(x) \\cdot v'(x) \\). Applying this rule will give you the derivative of \\( \\sin(x) \\cdot \\cos(x) \\). Finally, analyze the behavior of the function \\( g(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity. Determine the limit of this function as \\( x \\) goes to infinity.",
+      "examDetails": "JEE 2027 (Batch 2)",
+      "imageSrc1": "/placeholder.png",
+      "imageSrc2": "/placeholder.png",
+      "solutionPageLink": "/solutions/1",
+      "options": [
+        { "value": "a", "label": "Option A" },
+        { "value": "b", "label": "Option B" },
+        { "value": "c", "label": "Not an Option C" },
+        { "value": "d", "label": "Option D" }
+      ],
+      "correctAnswer": "b"
+    },
+    {
+      "questionText": "In the study of ungabunga, it is essential to understand the fundamental concepts of integration and differentiation. Consider the following integral: \\( \\int_{0}^{2} (3x^3 - 5x + 2) \\, dx. \\)\n Calculate this integral to find the area under the curve defined by the function \\( 3x^3 - 5x + 2 \\) from \\( x = 0 \\) to \\( x = 2. \\) Next, examine the following differential equation: \\( \\frac{dy}{dx} = 2x \\cdot e^x. \\) Solve this differential equation to find the general solution. The solution involves integrating a product of a polynomial and an exponential function, which can be approached using integration by parts. Also, consider the function \\( f(x) = \\sin(x) \\cdot \\cos(x) \\). Find the derivative of this function using the product rule. The product rule states that if \\( u(x) \\) and \\( v(x) \\) are functions of \\( x \\), then the derivative of \\( u(x) \\cdot v(x) \\) is given by \\( u'(x) \\cdot v(x) + u(x) \\cdot v'(x) \\). Applying this rule will give you the derivative of \\( \\sin(x) \\cdot \\cos(x) \\). Finally, analyze the behavior of the function \\( g(x) = \\frac{1}{x^2 + 1} \\) as \\( x \\) approaches infinity. Determine the limit of this function as \\( x \\) goes to infinity.",
+      "examDetails": "JEE 2027 (Batch 2)",
+      "imageSrc1": null,
+      "imageSrc2": null,
+      "solutionPageLink": "/solutions/1",
+      "options": [
+        { "value": "a", "label": "Option A" },
+        { "value": "b", "label": "Option B" },
+        { "value": "c", "label": "Option C" },
+        { "value": "d", "label": "Option D" }
+      ],
+      "correctAnswer": "c"
+    }
+  ]
+}

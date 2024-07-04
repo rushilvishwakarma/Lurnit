@@ -25,7 +25,7 @@ export function Navbar({ title }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-10 w-full backdrop-blur dark:backdrop-blur-md border-b transition-all duration-300 ease-in-out 
+      className={`sticky top-0 z-10 w-full backdrop-blur-xl dark:backdrop-blur-xl border-b transition-all duration-300 ease-in-out 
         ${showBorder ? 'border-border dark:border-border-dark' : 'border-transparent'}
         bg-transparent dark:bg-transparent`}  // Adjust this line
     >

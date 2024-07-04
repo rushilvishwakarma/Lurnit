@@ -1,0 +1,45 @@
+{
+  "flipWordsDemo": {
+    "prefix": "Lurn",
+    "words": ["better", "smarter", "faster"],
+    "suffix": "with this Learning Platform"
+  },
+  "announcementBanner": {
+    "text": "Join the waitlist",
+    "href": "#"
+  },
+  "cards": [
+    {
+      "title": "Practice PYQs",
+      "description": "Practice previous year questions.",
+      "href": "/previous-year-questions",
+      "imgSrc": "https://cdn.pixabay.com/photo/2023/03/13/04/25/buildings-7848348_1280.jpg"
+    },
+    {
+      "title": "Check Exam Updates",
+      "description": "Stay updated with the latest exam news.",
+      "href": "/exam-updates",
+      "imgSrc": "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg"
+    },
+    {
+      "title": "Practice Test Questions",
+      "description": "Practice chemistry test questions.",
+      "href": "/chemistry",
+      "imgSrc": "https://cdn.pixabay.com/photo/2014/01/21/19/51/crocus-249359_1280.jpg"
+    }
+  ],
+  "features": [
+    {
+      "title": "Easy to use",
+      "description": "We've made it easy to use and understand."
+    },
+    {
+      "title": "Fast and reliable",
+      "description": "We've made it fast and reliable."
+    },
+    {
+      "title": "Beautiful and modern",
+      "description": "We've made it beautiful and modern."
+    }
+  ]
+}

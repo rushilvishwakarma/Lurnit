@@ -38,7 +38,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-2 hover:opacity-75 cursor-pointer">
               <img
                 src={link.image}
-                className="bg-zinc-100 dark:bg-muted/20 rounded-md aspect-square mb-4 px-2 py-2"
+                className="bg-primary/10 dark:bg-muted/20 rounded-md aspect-square mb-4 px-2 py-2"
               />
               <h3 className="text-base tracking-tight">{link.caption}</h3>
             </div>
