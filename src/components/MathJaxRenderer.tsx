@@ -31,6 +31,7 @@ const loadMathJax = (): Promise<void> => {
   });
 };
 
+// Define the component
 const MathJaxRenderer = memo(({ math, isExpanded, previewLines = 3 }: MathJaxRendererProps) => {
   const mathJaxRef = useRef<HTMLDivElement | null>(null);
 
@@ -69,5 +70,8 @@ const MathJaxRenderer = memo(({ math, isExpanded, previewLines = 3 }: MathJaxRen
     </div>
   );
 });
+
+// Add displayName to the component
+MathJaxRenderer.displayName = 'MathJaxRenderer';
 
 export default MathJaxRenderer;
