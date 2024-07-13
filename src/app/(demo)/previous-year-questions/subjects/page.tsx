@@ -1,47 +1,118 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ContentLayout } from "@/components/panel/content-layout";
-import { Breadcrumb, BreadcrumbPage, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbPage,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator
+} from "@/components/ui/breadcrumb";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import subjectChapterData from "./subject-chapter.json"; // Import the JSON data
+import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+
+// Define the types for the JSON data
+interface Chapter {
+  href?: string;
+  avatarFallback: string;
+  title: string;
+  progress: number;
+  avatarImage?: string; // Optional property
+}
+
+interface Subject {
+  name: string;
+  chapters: Chapter[];
+}
+
+interface SubjectChapterData {
+  subjects: Subject[];
+}
+
+// Import JSON data and cast it to the defined type
+import subjectChapterDataJson from "./subject-chapter.json";
+const subjectChapterData: SubjectChapterData = subjectChapterDataJson as SubjectChapterData;
 
 // Define prop types for the QuestionCard component
 interface QuestionCardProps {
   href: string;
   avatarFallback: string;
   title: string;
-  avatarImage?: string; // Optional property for avatar image
+  progress: number; // Progress percentage for the radial chart
+  avatarImage?: string; // Optional property
 }
 
 // Reusable component for a question card
-const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title, avatarImage }) => (
-  <Link href={href}>
-    <div className="cursor-pointer">
-      <Card>
-        <CardContent className="grid gap-8 pt-4 pb-4">
-          <div className="flex items-center gap-4">
-            <Avatar className="h-9 w-9 sm:flex">
-              {avatarImage ? (
-                <AvatarImage src={avatarImage} alt="Avatar" />
-              ) : (
-                <AvatarFallback>{avatarFallback}</AvatarFallback>
-              )}
-            </Avatar>
-            <div className="grid gap-1">
-              <Button variant="linkHover2">{title}</Button>
+const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title, progress, avatarImage }) => {
+  const ProgressColor = 'hsl(var(--circular-progress))';
+
+  return (
+    <Link href={href || "#"}> {/* Fallback to "#" if href is undefined */}
+      <div className="cursor-pointer">
+        <Card>
+          <CardContent className="grid gap-4 pt-2 pb-2">
+            <div className="flex items-center gap-4">
+              <div className="relative w-16 h-16">
+                <RadialBarChart
+                  width={64}
+                  height={64}
+                  innerRadius={20}
+                  outerRadius={25}
+                  barSize={8}
+                  data={[{ name: 'Progress', value: progress }]}
+                  startAngle={90}
+                  endAngle={-270}
+                >
+                  <PolarAngleAxis
+                    type="number"
+                    domain={[0, 100]}
+                    angleAxisId={0}
+                    tick={false}
+                  />
+                  <RadialBar
+                    background
+                    dataKey="value"
+                    cornerRadius={10}
+                    fill={ProgressColor}
+                  />
+                </RadialBarChart>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <Avatar className="h-9 w-9">
+                    {avatarImage ? (
+                      <AvatarImage src={avatarImage} alt="Avatar" />
+                    ) : (
+                      <AvatarFallback>{avatarFallback}</AvatarFallback>
+                    )}
+                  </Avatar>
+                </div>
+              </div>
+              <div className="grid gap-1">
+                <Button variant="linkHover2">{title}</Button>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  </Link>
-);
+          </CardContent>
+        </Card>
+      </div>
+    </Link>
+  );
+};
 
 export default function HomePage() {
-  // Extract the default value from the JSON data
   const defaultSubject = subjectChapterData.subjects[0]?.name.toLowerCase() || "physics";
+
+  if (subjectChapterData.subjects.length === 0) {
+    return (
+      <ContentLayout title="Home">
+        <div className="flex justify-center items-center pt-20">
+          <div className="text-xl font-normal">No subjects available</div>
+        </div>
+      </ContentLayout>
+    );
+  }
 
   return (
     <ContentLayout title="Home">
@@ -64,12 +135,18 @@ export default function HomePage() {
           Previous Year Questions
         </div>
       </div>
-      
+
       <div className="flex justify-center items-center mt-8">
         <Tabs defaultValue={defaultSubject} className="w-full">
           <TabsList className="flex flex-wrap w-full h-full gap-1">
             {subjectChapterData.subjects.map((subject, index) => (
-              <TabsTrigger key={index} value={subject.name.toLowerCase()} className="sm:flex-grow lg:flex-grow text-center">{subject.name}</TabsTrigger>
+              <TabsTrigger
+                key={index}
+                value={subject.name.toLowerCase()}
+                className="sm:flex-grow lg:flex-grow text-center"
+              >
+                {subject.name}
+              </TabsTrigger>
             ))}
           </TabsList>
 
@@ -77,7 +154,14 @@ export default function HomePage() {
             <TabsContent key={index} value={subject.name.toLowerCase()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full py-5">
                 {subject.chapters.map((chapter, chapterIndex) => (
-                  <QuestionCard key={chapterIndex} {...chapter} />
+                  <QuestionCard
+                    key={chapterIndex}
+                    href={chapter.href || "#"}
+                    avatarFallback={chapter.avatarFallback}
+                    title={chapter.title}
+                    progress={chapter.progress}
+                    avatarImage={chapter.avatarImage}
+                  />
                 ))}
               </div>
             </TabsContent>

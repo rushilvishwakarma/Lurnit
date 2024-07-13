@@ -51,6 +51,16 @@
   --theme-color: #57a3f3;
 }
 
+/* Chart Colors */
+:root {
+  --circular-progress: 187 100% 34%;
+}
+.dark {
+  --circular-progress: 187 100% 34%;
+}
+  
+
+
 @layer base {
   * {
     @apply border-border;
@@ -133,5 +143,6 @@ mjx-container.MathJax {
   max-height: 80vh; /* Limit height to viewport height */
   object-fit: contain; /* Ensure image is not cropped */
 }
+
 
 
