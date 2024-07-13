@@ -1,0 +1,101 @@
+{
+    "subjects": [
+      {
+        "name": "Physics",
+        "chapters": [
+          {
+            "href": "subjects/physics/mathematics-in-physics",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          },
+          {
+            "href": "/previous-year-questions/physics/units-and-dimension",
+            "avatarFallback": "UD",
+            "title": "Units and Dimensions"
+          },
+          {
+            "href": "/previous-year-questions/physics",
+            "avatarFallback": "1D",
+            "title": "Motion in One Dimension"
+          },
+          {
+            "href": "/previous-year-questions/physics",
+            "avatarFallback": "2D",
+            "title": "Motion in Two Dimension"
+          },
+          {
+            "href": "/previous-year-questions/physics",
+            "avatarFallback": "LM",
+            "title": "Laws of Motion"
+          },
+          {
+            "href": "/previous-year-questions/physics",
+            "avatarFallback": "RO",
+            "title": "Ray Optics"
+          }
+        ]
+      },
+      {
+        "name": "Chemistry",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          }
+        ]
+      },
+      {
+        "name": "Mathematics",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          }
+        ]
+      },
+      {
+        "name": "Biology",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          }
+        ]
+      },
+      {
+        "name": "English",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          }
+        ]
+      },
+      {
+        "name": "Computer",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics"
+          }
+        ]
+      },
+      {
+        "name": "History",
+        "chapters": [
+          {
+            "href": "/previous-year-questions/chemistry",
+            "avatarFallback": "MP",
+            "title": "Mathematics in Physics",
+            "avatarImage": "https://example.com/path-to-your-image.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -5,24 +5,29 @@ import { Breadcrumb, BreadcrumbPage, BreadcrumbItem, BreadcrumbLink, BreadcrumbL
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import subjectChapterData from "./subject-chapter.json"; // Import the JSON data
 
 // Define prop types for the QuestionCard component
 interface QuestionCardProps {
   href: string;
   avatarFallback: string;
   title: string;
+  avatarImage?: string; // Optional property for avatar image
 }
 
 // Reusable component for a question card
-const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title }) => (
+const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title, avatarImage }) => (
   <Link href={href}>
     <div className="cursor-pointer">
       <Card>
         <CardContent className="grid gap-8 pt-4 pb-4">
           <div className="flex items-center gap-4">
             <Avatar className="h-9 w-9 sm:flex">
-              <AvatarImage src="/avatars/01.png" alt="Avatar" />
-              <AvatarFallback>{avatarFallback}</AvatarFallback>
+              {avatarImage ? (
+                <AvatarImage src={avatarImage} alt="Avatar" />
+              ) : (
+                <AvatarFallback>{avatarFallback}</AvatarFallback>
+              )}
             </Avatar>
             <div className="grid gap-1">
               <Button variant="linkHover2">{title}</Button>
@@ -35,14 +40,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title
 );
 
 export default function HomePage() {
-  const questionData = [
-    { href: "subjects/physics/mathematics-in-physics", avatarFallback: "MP", title: "Mathematics in Physics" },
-    { href: "/previous-year-questions/physics/units-and-dimention", avatarFallback: "UD", title: "Units and Dimensions" },
-    { href: "/previous-year-questions/physics", avatarFallback: "1D", title: "Motion in One Dimension" },
-    { href: "/previous-year-questions/physics", avatarFallback: "2D", title: "Motion in Two Dimension" },
-    { href: "/previous-year-questions/physics", avatarFallback: "LM", title: "Laws of Motion" },
-    { href: "/previous-year-questions/physics", avatarFallback: "RO", title: "Ray Optics" },
-  ];
+  // Extract the default value from the JSON data
+  const defaultSubject = subjectChapterData.subjects[0]?.name.toLowerCase() || "physics";
 
   return (
     <ContentLayout title="Home">
@@ -67,27 +66,22 @@ export default function HomePage() {
       </div>
       
       <div className="flex justify-center items-center mt-8">
-        <Tabs defaultValue="physics" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 justify-center">
-            <TabsTrigger value="physics">Physics</TabsTrigger>
-            <TabsTrigger value="chemistry">Chemistry</TabsTrigger>
-            <TabsTrigger value="mathematics">Maths</TabsTrigger>
-            <TabsTrigger value="biology">Biology</TabsTrigger>
+        <Tabs defaultValue={defaultSubject} className="w-full">
+          <TabsList className="flex flex-wrap w-full h-full gap-1">
+            {subjectChapterData.subjects.map((subject, index) => (
+              <TabsTrigger key={index} value={subject.name.toLowerCase()} className="sm:flex-grow lg:flex-grow text-center">{subject.name}</TabsTrigger>
+            ))}
           </TabsList>
 
-          <TabsContent value="physics">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full py-5">
-              {questionData.map((question, index) => (
-                <QuestionCard key={index} {...question} />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="chemistry">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full py-5">
-              <QuestionCard href="/previous-year-questions/chemistry" avatarFallback="MP" title="Mathematics in Physics" />
-            </div>
-          </TabsContent>
+          {subjectChapterData.subjects.map((subject, index) => (
+            <TabsContent key={index} value={subject.name.toLowerCase()}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full py-5">
+                {subject.chapters.map((chapter, chapterIndex) => (
+                  <QuestionCard key={chapterIndex} {...chapter} />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
         </Tabs>
       </div>
     </ContentLayout>
