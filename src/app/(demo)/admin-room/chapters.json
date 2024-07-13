@@ -1,0 +1,10 @@
+[
+  { "value": "chapter1", "label": "Mathematics in Physics" },
+  { "value": "chapter2", "label": "Thermodynamics" },
+  { "value": "chapter3", "label": "Rotational Motion" },
+  { "value": "chapter4", "label": "Units and Dimensions" },
+  { "value": "chapter5", "label": "Linear Motion & Gravity" },
+  { "value": "chapter6", "label": "Nuclear Fusion" },
+  { "value": "chapter7", "label": "Force" },
+  { "value": "chapter8", "label": "Modern Physics" }
+]

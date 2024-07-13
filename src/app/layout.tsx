@@ -5,6 +5,8 @@ import AdminPanelLayout from "@/components/panel/admin-panel-layout";
 import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
+import { title } from "process";
+import { CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
       ? `https://${process.env.VERCEL_URL}`
       : `http://localhost:${process.env.PORT || 3000}`
   ),
-  title: "Home",
+  title: "Lurnit",
   description:
     "Let's Lurn it.",
   alternates: {

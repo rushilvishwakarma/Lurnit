@@ -22,8 +22,8 @@
   --destructive: 7 82% 38%;
   --destructive-foreground: 7 82% 98%;
   --ring: 187 100% 34%;
-  --radius: 1.5rem;
-  --new: 40 100% 99.47%;
+  --radius: 1rem;
+  --hello: 40 100% 99.47%;
 }
 
 .dark {
@@ -75,7 +75,7 @@ mjx-container.MathJax {
 }
 
 * {
-  user-select: none;
+  user-select: "";
 }
 
 .mathjax-container.plain-text {
@@ -133,3 +133,5 @@ mjx-container.MathJax {
   max-height: 80vh; /* Limit height to viewport height */
   object-fit: contain; /* Ensure image is not cropped */
 }
+
+

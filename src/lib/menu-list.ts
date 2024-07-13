@@ -65,19 +65,24 @@ export function getMenuList(pathname: string): Group[] {
         },
         {
           href: "",
-          label: "Posts",
-          active: pathname.includes("/posts"),
+          label: "Admin Room",
+          active: pathname.includes("/admin-room"),
           icon: SquarePen,
           submenus: [
             {
-              href: "/posts",
-              label: "All Posts",
-              active: pathname === "/posts"
+              href: "/admin-room/add-questions-and-answers",
+              label: "Add Questions",
+              active: pathname === "/admin-room/add-questions-and-answers"
             },
             {
-              href: "/posts/new",
-              label: "New Post",
-              active: pathname === "/posts/new"
+              href: "/admin-room/modify-exams-section",
+              label: "Add Exams & Subjects",
+              active: pathname === "/admin-room/modify-exams-section"
+            },
+            {
+              href: "/admin-room/modify-chapters-section",
+              label: "Add Chapters",
+              active: pathname === "/admin-room/modify-chapters-section"
             }
           ]
         }
