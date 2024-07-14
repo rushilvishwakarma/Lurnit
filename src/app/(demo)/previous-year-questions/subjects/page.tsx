@@ -1,4 +1,5 @@
 "use client";
+import { CalendarDays, ScrollText, FileQuestion } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ContentLayout } from "@/components/panel/content-layout";
@@ -14,6 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 
 // Define the types for the JSON data
 interface Chapter {
@@ -131,9 +133,45 @@ export default function HomePage() {
       </Breadcrumb>
 
       <div className="flex justify-left items-left pt-20">
-        <div className="text-3xl sm:text-4xl md:text-5xl font-normal">
-          Previous Year Questions
-        </div>
+        <HoverCard>
+          <HoverCardTrigger>
+            <div className="text-3xl sm:text-4xl md:text-5xl font-normal cursor-pointer">
+              Previous Year Questions
+            </div>
+          </HoverCardTrigger>
+          <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-12 justify-items-between">
+  <div className="mt-2 flex flex-col items-start space-y-1">
+
+  <CalendarDays className="h-5 w-5 opacity-70 pb-1" />
+    <p className="text-sm">
+      Collection Year
+    </p>
+    <span className="text-xs text-muted-foreground">
+      2024-20XX
+    </span>
+  </div>
+
+  <div className="mt-2 flex flex-col items-start space-y-1">
+  <ScrollText className="h-5 w-5 opacity-70 pb-1" />
+    <p className="text-sm">
+      Papers Count
+    </p>
+    <span className="text-xs text-muted-foreground">
+      999
+    </span>
+  </div>
+
+  <div className="mt-2 flex flex-col items-start space-y-1">
+  <FileQuestion className="h-5 w-5 opacity-70 pb-1" />
+    <p className="text-sm">
+      Total Questions
+    </p>
+    <span className="text-xs text-muted-foreground">
+      99999
+    </span>
+  </div>
+</HoverCardContent>
+        </HoverCard>
       </div>
 
       <div className="flex justify-center items-center mt-8">
