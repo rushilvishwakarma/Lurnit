@@ -98,13 +98,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title
                   </div>
                 </div>
                 <div className="m-2">
-                  <Button variant="linkHover2" className="h-5 px-0 py-0">{title}</Button>
+                  <Button variant="linkHover5" className="h-2 px-0 py-0">{title}</Button>
                   <CardDescription>110 Qs, 30%</CardDescription>
                   {/*<Badge variant="destructive" className="sm:hidden">Reduced</Badge>*/}
                 </div>
               </div>
               <div className="mr-3 flex items-center">
-                <Badge variant="destructive" className=" md:hidden lg:hidden">Reduced</Badge>
+                <Badge variant="destructive" className="hidden lg:block">Reduced</Badge>
               </div>
             </div>
           </CardContent>
@@ -143,7 +143,7 @@ export default function HomePage() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="py-3 pt-3 flex justify-center md:justify-start">
+      <div className="py-3 pt-3 lg:pt-8 flex justify-center md:justify-start">
         {links.length > 0 && (
           <div className="flex flex-col gap-2">
             <img
