@@ -15,7 +15,7 @@ const FlipWordsDemo = () => {
 
   return (
     <div className="flex justify-left items-left px-7 pb-6">
-      <div className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-600 dark:text-neutral-400 pt-10">
+      <div className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-600 dark:text-neutral-100 pt-10">
         {prefix}
         <FlipWords words={words} /> <br />
         {suffix}

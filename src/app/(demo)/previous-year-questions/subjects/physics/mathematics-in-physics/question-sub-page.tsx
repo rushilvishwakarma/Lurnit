@@ -15,6 +15,8 @@ import { ContentLayout } from "@/components/panel/content-layout";
 import { Badge } from "@/components/ui/badge";
 import MathJaxRenderer from '@/components/MathJaxRenderer';
 import content from './content.json';
+import QuizRadioGroup from '@/components/quiz/quiz-radio-group';
+import QuizCarousel from '@/components/quiz/quiz-carousel';
 
 import { CalendarDays } from "lucide-react";
 
@@ -29,6 +31,11 @@ export default function PreviousYearQuestions() {
 
   const handleImageClick = (src: string) => {
     setSelectedImageSrc(src);
+  };
+
+  const handleCardClick = () => {
+    // Add the logic you want to execute when the card is clicked
+    console.log("Card clicked!");
   };
 
   return (
@@ -52,34 +59,34 @@ export default function PreviousYearQuestions() {
       </Breadcrumb>
 
       <div className="pt-10 pb-2">
-        <div className="relative">
-          <HoverCard>
-            <HoverCardTrigger>
-              <button
-                type="button"
-                className="text-3xl sm:text-4xl md:text-5xl font-normal bg-transparent border-none cursor-pointer"
-              >
-                Mathematics in Physics
-              </button>
-            </HoverCardTrigger>
-            <HoverCardContent className="mt-2">
-              The React Framework created and maintained by @vercel.
-            </HoverCardContent>
-          </HoverCard>
-        </div>
+        <HoverCard>
+          <HoverCardTrigger>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal">
+              Mathematics in Physics
+            </h1>
+          </HoverCardTrigger>
+          <HoverCardContent>
+            The React Framework created and maintained by @vercel.
+          </HoverCardContent>
+        </HoverCard>
       </div>
 
       <Separator className="mt-7 mb-6" />
 
       <div className="max-w-full">
         {content.questions.map((question, index) => (
-          <div key={index} className="mb-8">
+          <div
+            key={index}
+            className="mb-8"
+            onClick={handleCardClick}
+            style={{ cursor: 'pointer', border: 'none', background: 'transparent' }}
+          >
             <div className="flex flex-col mb-2">
               <div className="flex items-start mb-2">
                 <Badge className="mr-4 mt-1">{index + 1}</Badge>
                 <div>
                   <h2 className="text-xl font-semibold">
-                    <MathJaxRenderer math={question.questionText} isExpanded={false} />
+                    <MathJaxRenderer math={question.questionText} isExpanded={true} />
                   </h2>
                 </div>
               </div>
@@ -87,6 +94,18 @@ export default function PreviousYearQuestions() {
                 <Badge variant="outline" className="py-1 px-2">
                   {question.examDetails}
                 </Badge>
+              </div>
+              <div className="lg:pl-7 px-2">
+                <QuizCarousel
+                  imageSrc1={question.imageSrc1}
+                  imageSrc2={question.imageSrc2}
+                  handleImageClick={handleImageClick}
+                />
+                <QuizRadioGroup
+                  options={question.options}
+                  correctAnswer={question.correctAnswer}
+                  solutionPageLink={question.solutionPageLink}
+                />
               </div>
               <Separator className="mt-7" />
             </div>

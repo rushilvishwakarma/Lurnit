@@ -1,0 +1,116 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+const Dashboard = () => {
+  return (
+    <div className="relative w-full flex flex-col lg:grid lg:grid-cols-2 lg:min-h-screen xl:min-h-screen">
+      {/* Image section visible on small screens */}
+      <div className="block lg:hidden relative w-full h-64">
+        <Image
+          src="/video-thumbnail/understanding-electromagnetism.jpeg"
+          alt="Image"
+          layout="fill"
+          objectFit="cover"
+          className="dark:brightness-[0.2] dark:grayscale"
+        />
+      </div>
+
+      {/* Content section */}
+      <div className="flex-grow flex flex-col items-center justify-center py-12 lg:py-0">
+        <div className="mx-auto grid w-[350px] gap-6">
+          <div className="grid gap-2 text-center">
+            <h1 className="text-3xl font-bold">Login</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your email below to login to your account
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  href="/forgot-password"
+                  className="ml-auto inline-block text-sm underline"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
+              <Input id="password" type="password" required />
+            </div>
+            <Button type="submit" className="w-full">
+              Login/Sign Up
+            </Button>
+            <Button variant="outline" className="w-full">
+              Continue with Google
+            </Button>
+          </div>
+          <div className="mt-4 text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <Link href="#" className="underline">
+              Sign up
+            </Link>
+          </div>
+          {/* Terms and Privacy Policy text */}
+          <p className="px-8 text-center text-sm text-muted-foreground mt-4">
+            By clicking continue, you agree to our{" "}
+            <a
+              className="underline underline-offset-4 hover:text-primary"
+              href="/terms"
+            >
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a
+              className="underline underline-offset-4 hover:text-primary"
+              href="/privacy"
+            >
+              Privacy Policy
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+
+      {/* Image section visible on large screens */}
+      <div className="hidden lg:block relative w-full h-full">
+        <Image
+          src="/video-thumbnail/understanding-electromagnetism.jpeg"
+          alt="Image"
+          layout="fill"
+          objectFit="cover"
+          className="h-full w-full dark:brightness-[0.2] dark:grayscale"
+        />
+        <blockquote className="absolute bottom-4 left-4 text-white opacity-90 transition-opacity duration-1000 ease-in-out max-w-xxl p-9">
+          <p className="text-lg">
+            “This platform has saved me countless hours of wondering for pyqs that are reliable and it also has an amazing UI”
+          </p>
+          <footer className="text-sm mt-2">Bogus Binted</footer>
+        </blockquote>
+      </div>
+    </div>
+  );
+};
+
+const HomePage = () => {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-grow">
+        <Dashboard />
+      </main>
+    </div>
+  );
+};
+
+export default HomePage;
