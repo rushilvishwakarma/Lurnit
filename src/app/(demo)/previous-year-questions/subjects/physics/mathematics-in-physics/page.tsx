@@ -63,7 +63,7 @@ export default function PreviousYearQuestions() {
               </button>
             </HoverCardTrigger>
 
- <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-12 justify-items-between">
+ <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-5 justify-items-between">
   <div className="mt-2 flex flex-col items-start space-y-1">
 
   <CircleDot className="h-5 w-5 opacity-70 pb-1" />
