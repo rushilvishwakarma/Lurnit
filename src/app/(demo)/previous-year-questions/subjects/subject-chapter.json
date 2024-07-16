@@ -1,113 +1,114 @@
 {
-    "subjects": [
-      {
-        "name": "Physics",
-        "chapters": [
-          {
-            "href": "subjects/physics/mathematics-in-physics",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 95
-          },
-          {
-            "href": "/previous-year-questions/physics/units-and-dimension",
-            "avatarFallback": "UD",
-            "title": "Units and Dimensions",
-            "progress": 0
-          },
-          {
-            "href": "/previous-year-questions/physics",
-            "avatarFallback": "1D",
-            "title": "Motion in One Dimension",
-            "progress": 19
-          },
-          {
-            "href": "/previous-year-questions/physics",
-            "avatarFallback": "2D",
-            "title": "Motion in Two Dimension",
-            "progress": 75
-          },
-          {
-            "href": "/previous-year-questions/physics",
-            "avatarFallback": "LM",
-            "title": "Laws of Motion",
-            "progress": 99
-          },
-          {
-            "href": "/previous-year-questions/physics",
-            "avatarFallback": "RO",
-            "title": "Ray Optics",
-            "progress": 100
-          }
-        ]
-      },
-      {
-        "name": "Chemistry",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75
-          }
-        ]
-      },
-      {
-        "name": "Mathematics",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75
-          }
-        ]
-      },
-      {
-        "name": "Biology",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75
-          }
-        ]
-      },
-      {
-        "name": "English",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75
-          }
-        ]
-      },
-      {
-        "name": "Computer",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75
-          }
-        ]
-      },
-      {
-        "name": "History",
-        "chapters": [
-          {
-            "href": "/previous-year-questions/chemistry",
-            "avatarFallback": "MP",
-            "title": "Mathematics in Physics",
-            "progress": 75,
-            "avatarImage": "https://example.com/path-to-your-image.jpg"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "subjects": [
+    {
+      "name": "Physics",
+      "chapters": [
+        {
+          "href": "subjects/questions-list",
+          "avatarFallback": "MP",
+          "title": "Mathematics in Physics",
+          "progress": 95,
+          "attention": "Reduced from Syllabus"
+        },
+        {
+          "href": "/previous-year-questions/physics/units-and-dimension",
+          "avatarFallback": "UD",
+          "title": "Units and Dimensions",
+          "progress": 0,
+          "attention": "Removed from Syllabus"
+        },
+        {
+          "href": "/previous-year-questions/physics",
+          "avatarFallback": "1D",
+          "title": "Motion in One Dimension",
+          "progress": 19
+        },
+        {
+          "href": "/previous-year-questions/physics",
+          "avatarFallback": "2D",
+          "title": "Motion in Two Dimension",
+          "progress": 75
+        },
+        {
+          "href": "/previous-year-questions/physics",
+          "avatarFallback": "LM",
+          "title": "Laws of Motion",
+          "progress": 99
+        },
+        {
+          "href": "/previous-year-questions/physics",
+          "avatarFallback": "RO",
+          "title": "Ray Optics",
+          "progress": 100
+        }
+      ]
+    },
+    {
+      "name": "Chemistry",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/chemistry",
+          "avatarFallback": "MP",
+          "title": "Mathematics in Chemistry",
+          "progress": 75
+        }
+      ]
+    },
+    {
+      "name": "Mathematics",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/mathematics",
+          "avatarFallback": "MP",
+          "title": "Mathematics in Mathematics",
+          "progress": 75
+        }
+      ]
+    },
+    {
+      "name": "Biology",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/biology",
+          "avatarFallback": "MP",
+          "title": "Biology Basics",
+          "progress": 75
+        }
+      ]
+    },
+    {
+      "name": "English",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/english",
+          "avatarFallback": "MP",
+          "title": "English Literature",
+          "progress": 75
+        }
+      ]
+    },
+    {
+      "name": "Computer",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/computer",
+          "avatarFallback": "MP",
+          "title": "Computer Basics",
+          "progress": 75
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "chapters": [
+        {
+          "href": "/previous-year-questions/history",
+          "avatarFallback": "MP",
+          "title": "World History",
+          "progress": 75,
+          "avatarImage": "https://example.com/path-to-your-image.jpg"
+        }
+      ]
+    }
+  ]
+}

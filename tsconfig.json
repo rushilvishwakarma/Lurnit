@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx", "src/components/MathJaxRenderer.jsx", "src/app/(demo)/previous-year-questions/subjects/physics/mathematics-in-physics/page.tsx-done"],
   "exclude": ["node_modules"]
 }

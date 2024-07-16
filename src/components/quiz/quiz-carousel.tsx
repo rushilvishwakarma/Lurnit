@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel'; // Adjust the import path as needed
 import Modal from '@/components/quiz/modal'; // Adjust the import path as needed
+import DotPattern from '@/components/quiz/dot-pattern'; // Adjust the import path as needed
+import { cn } from '@/lib/utils'; // Import your `cn` function if you have one
 
 interface QuizCarouselProps {
   imageSrc1: string | null;
@@ -28,14 +30,21 @@ const QuizCarousel: React.FC<QuizCarouselProps> = ({ imageSrc1, imageSrc2, handl
         <Carousel className="relative mt-4">
           <CarouselContent>
             {imageSrc1 && (
-              <CarouselItem>
+              <CarouselItem className="relative">
                 <div
-                  className="flex flex-col hover:opacity-75 cursor-pointer"
+                  className="relative flex flex-col hover:opacity-75 cursor-pointer"
                   onClick={() => openModal(imageSrc1)}
                 >
+                  <DotPattern
+                    className={cn(
+                      "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+                      "absolute inset-0 rounded-md"
+                    )}
+                    style={{ opacity: 0.3, zIndex: 1 }} // Ensure DotPattern is on top
+                  />
                   <div
-                    className="bg-muted rounded-md aspect-square p-4"
-                    style={{ height: '160px', maxWidth: '100%', position: 'relative' }}
+                    className="rounded-md aspect-square p-4"
+                    style={{ height: '163px', maxWidth: '100%', position: 'relative' }}
                   >
                     <img
                       src={imageSrc1}
@@ -47,27 +56,34 @@ const QuizCarousel: React.FC<QuizCarouselProps> = ({ imageSrc1, imageSrc2, handl
               </CarouselItem>
             )}
             {imageSrc2 && (
-              <CarouselItem>
+              <CarouselItem className="relative">
                 <div
-                  className="flex flex-col hover:opacity-75 cursor-pointer"
+                  className="relative flex flex-col hover:opacity-75 cursor-pointer"
                   onClick={() => openModal(imageSrc2)}
                 >
+                  <DotPattern
+                    className={cn(
+                      "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+                      "absolute inset-0 rounded-md"
+                    )}
+                    style={{ opacity: 0.3, zIndex: 1 }} // Ensure DotPattern is on top
+                  />
                   <div
-                    className="bg-muted rounded-md aspect-square p-4"
-                    style={{ height: '160px', maxWidth: '100%', position: 'relative' }}
+                    className="rounded-md aspect-square p-4"
+                    style={{ height: '163px', maxWidth: '100%', position: 'relative' }}
                   >
                     <img
                       src={imageSrc2}
                       alt="Image"
-                      className="absolute inset-0 w-full h-full object-contain px-2"
+                      className="absolute inset-0 w-full h-full object-contain px-2 py-2"
                     />
                   </div>
                 </div>
               </CarouselItem>
             )}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+          <CarouselPrevious className="absolute left-7 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center" />
+          <CarouselNext className="absolute right-7 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center" />
         </Carousel>
       )}
 

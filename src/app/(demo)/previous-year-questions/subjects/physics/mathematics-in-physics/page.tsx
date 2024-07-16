@@ -1,5 +1,5 @@
 'use client';
-import { CircleDot } from "lucide-react"
+
 import Link from 'next/link';
 import { useState } from 'react';
 import {
@@ -14,21 +14,46 @@ import { Separator } from "@/components/ui/separator";
 import { ContentLayout } from "@/components/panel/content-layout";
 import { Badge } from "@/components/ui/badge";
 import MathJaxRenderer from '@/components/MathJaxRenderer';
-import content from './content.json';
-
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import content from '@/components/questions-example-list.json';
+import QuizRadioGroup from '@/components/quiz/quiz-radio-group';
+import QuizCarousel from '@/components/quiz/quiz-carousel';
+import { Button } from "@/components/ui/button"; // Import your ButtonSecondary component
 
 export default function PreviousYearQuestions() {
   const [selectedImageSrc, setSelectedImageSrc] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  const handleCardClick = (index: number) => {
-    // Handle click event, e.g., navigate to details page or show more info
-    console.log(`Question ${index + 1} clicked`);
-    // You can also update state or perform other actions as needed
+  const handleImageClick = (src: string) => {
+    setSelectedImageSrc(src);
+  };
+
+  const handleCardClick = () => {
+    // Add the logic you want to execute when the card is clicked
+    console.log("Card clicked!");
+  };
+
+  const handlePreviousClick = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      // Scroll to the top of the question container
+      scrollToTop();
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentIndex < content.questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      // Scroll to the top of the question container
+      scrollToTop();
+    }
+  };
+
+  const scrollToTop = () => {
+    // Use window.scrollTo to scroll directly to the top of the page
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant' // Use 'instant' for immediate scroll without animation
+    });
   };
 
   return (
@@ -51,93 +76,68 @@ export default function PreviousYearQuestions() {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="pt-10 pb-2">
-        <div className="relative">
-          <HoverCard>
-            <HoverCardTrigger>
-              <button
-                type="button"
-                className="text-3xl sm:text-4xl md:text-5xl font-normal bg-transparent border-none cursor-pointer"
-              >
-                Mathematics in Physics
-              </button>
-            </HoverCardTrigger>
-
- <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-5 justify-items-between">
-  <div className="mt-2 flex flex-col items-start space-y-1">
-
-  <CircleDot className="h-5 w-5 opacity-70 pb-1" />
-    <p className="text-sm">
-      Factual
-    </p>
-    <span className="text-xs text-muted-foreground">
-      123
-    </span>
-  </div>
-
-  <div className="mt-2 flex flex-col items-start space-y-1">
-  <CircleDot className="h-5 w-5 opacity-70 pb-1" />
-    <p className="text-sm">
-      Easy
-    </p>
-    <span className="text-xs text-muted-foreground">
-      123
-    </span>
-  </div>
-
-  <div className="mt-2 flex flex-col items-start space-y-1">
-  <CircleDot className="h-5 w-5 opacity-70 pb-1" />
-    <p className="text-sm">
-      Moderate
-    </p>
-    <span className="text-xs text-muted-foreground">
-      123
-    </span>
-  </div>
-
-  <div className="mt-2 flex flex-col items-start space-y-1">
-  <CircleDot className="h-5 w-5 opacity-70 pb-1" />
-    <p className="text-sm">
-      Difficult
-    </p>
-    <span className="text-xs text-muted-foreground">
-      123
-    </span>
-  </div>
-
-</HoverCardContent>
-
-          </HoverCard>
-        </div>
-      </div>
-
-      <Separator className="mt-7 mb-1" />
-
-      <div className="max-w-full">
-        {content.questions.map((question, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-1"
-            onClick={() => handleCardClick(index)}
-          >
-            <div className="flex flex-col gap-2 p-4 rounded-md hover:bg-muted/20 cursor-pointer">
-              <div className="flex items-start mb-2">
-                <Badge className="mr-4 mt-1">{index + 1}</Badge>
-                <div>
-                  <h2 className="text-xl font-semibold">
-                    <MathJaxRenderer math={question.questionText} isExpanded={false} />
-                  </h2>
+      <div className="mt-7 mb-6 max-w-full">
+        {content.questions.length > 0 && (
+          <div>
+            {/* Display Current Question */}
+            <div
+              key={currentIndex}
+              className="mb-8"
+              onClick={handleCardClick}
+              style={{ cursor: 'pointer', border: 'none', background: 'transparent' }}
+            >
+              <div className="flex flex-col mb-2">
+                {/* Container for Badge and Question Text */}
+                <div className="flex flex-col md:flex-row items-start mb-2">
+                  <Badge className="md:mr-4 md:mt-1">{currentIndex + 1}</Badge>
+                  <div className="mt-2 md:mt-0">
+                    <h2 className="text-xl font-semibold">
+                      <MathJaxRenderer math={content.questions[currentIndex].questionText} isExpanded={true} />
+                    </h2>
+                  </div>
                 </div>
+                <div className="flex justify-end pt-2">
+                  <Badge variant="outline" className="py-1 px-2">
+                    {content.questions[currentIndex].examDetails}
+                  </Badge>
+                </div>
+                <div className="lg:pl-7 px-2">
+                  <QuizCarousel
+                    imageSrc1={content.questions[currentIndex].imageSrc1}
+                    imageSrc2={content.questions[currentIndex].imageSrc2}
+                    handleImageClick={handleImageClick}
+                  />
+                  <QuizRadioGroup
+                    options={content.questions[currentIndex].options}
+                    correctAnswer={content.questions[currentIndex].correctAnswer}
+                    solutionPageLink={content.questions[currentIndex].solutionPageLink}
+                    isMultiSelect={false} // or true, depending on your requirements
+                  />
+
+                </div>
+                <Separator className="mt-20" />
               </div>
-              <div className="flex justify-end pt-2">
-                <Badge variant="outline" className="py-1 px-2">
-                  {question.examDetails}
-                </Badge>
-              </div>
-              </div>
-            <Separator className="mb-1"/>
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-between">
+              <Button
+                variant="outline"
+                onClick={handlePreviousClick}
+                disabled={currentIndex === 0}
+              >
+                Previous Question
+              </Button>
+              <Button
+                variant="outline"
+                onClick={handleNextClick}
+                disabled={currentIndex === content.questions.length - 1}
+              >
+                Next Question
+              </Button>
+            </div>
           </div>
-        ))}
+        )}
       </div>
     </ContentLayout>
   );

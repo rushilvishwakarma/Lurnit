@@ -1,5 +1,5 @@
 "use client";
-import { CalendarDays, ScrollText, FileQuestion } from "lucide-react"
+import { CalendarDays, ScrollText, FileQuestion, TriangleAlert, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ContentLayout } from "@/components/panel/content-layout";
@@ -11,20 +11,22 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardDescription, } from "@/components/ui/card";
+import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
-import { Badge } from "@/components/ui/badge"
-import selectExamData from "../select-exam.json";
+import { Badge } from "@/components/ui/badge";
 
-// Define the types for the JSON data
+// Import JSON data and cast it to the defined type
+import subjectChapterDataJson from "./subject-chapter.json";
+
 interface Chapter {
   href?: string;
   avatarFallback: string;
   title: string;
   progress: number;
+  attention?: string;
   avatarImage?: string; // Optional property
 }
 
@@ -37,8 +39,6 @@ interface SubjectChapterData {
   subjects: Subject[];
 }
 
-// Import JSON data and cast it to the defined type
-import subjectChapterDataJson from "./subject-chapter.json";
 const subjectChapterData: SubjectChapterData = subjectChapterDataJson as SubjectChapterData;
 
 // Define prop types for the QuestionCard component
@@ -47,13 +47,12 @@ interface QuestionCardProps {
   avatarFallback: string;
   title: string;
   progress: number; // Progress percentage for the radial chart
+  attention?: string;
   avatarImage?: string; // Optional property
 }
 
-const links = selectExamData;
-
 // Reusable component for a question card
-const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title, progress, avatarImage }) => {
+const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title, progress, attention, avatarImage }) => {
   const ProgressColor = 'hsl(var(--circular-progress))';
 
   return (
@@ -99,13 +98,21 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ href, avatarFallback, title
                 </div>
                 <div className="m-2">
                   <Button variant="linkHover5" className="h-2 px-0 py-0">{title}</Button>
-                  <CardDescription>110 Qs, 30%</CardDescription>
-                  {/*<Badge variant="destructive" className="sm:hidden">Reduced</Badge>*/}
+                  <CardDescription>{`${progress} Qs, ${progress}%`}</CardDescription>
                 </div>
               </div>
-              <div className="mr-3 flex items-center">
-                <Badge variant="destructive" className="hidden lg:block">Reduced</Badge>
-              </div>
+              {attention && (
+                <div className="mr-3 flex items-center">
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <TriangleAlert className="h-5 w-5 opacity-100 pb-1 text-red-500" />
+                    </HoverCardTrigger>
+                    <HoverCardContent>
+                      {attention}
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -128,48 +135,30 @@ export default function HomePage() {
   }
 
   return (
-    <ContentLayout title="Home">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>PYQs</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <div className="py-3 pt-3 lg:pt-8 flex justify-center md:justify-start">
-        {links.length > 0 && (
-          <div className="flex flex-col gap-2">
-            <img
-              src={links[0].image}
-              className="w-28 h-28 mb-3" // Adjust size with w-28 and h-28
-              alt="Logo" // Added alt text for accessibility
-            />
-          </div>
-        )}
-      </div>
-
-      <div className="flex justify-center md:justify-start items-left">
+    <ContentLayout title="Previous Year Questions">
+      <div className="flex items-center justify-between">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>PYQs</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
         <HoverCard>
           <HoverCardTrigger>
-            <button
-              type="button"
-              className="text-1xl sm:text-2xl md:text-2xl font-normal bg-transparent border-none cursor-pointer pb-1"
-            >
-              MHCET Previous Year Questions
-            </button>
+            <Info className="h-5 w-5" />
           </HoverCardTrigger>
-          <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-5 justify-items-between">
+          <HoverCardContent className="mt-3 p-5 flex flex-nowrap space-x-5 justify-between">
             <div className="mt-2 flex flex-col items-start space-y-1">
               <CalendarDays className="h-5 w-5 opacity-70 pb-1" />
               <p className="text-sm">
-                Collection Year
+                Collection
               </p>
               <span className="text-xs text-muted-foreground">
                 2024-20XX
@@ -179,7 +168,7 @@ export default function HomePage() {
             <div className="mt-2 flex flex-col items-start space-y-1">
               <ScrollText className="h-5 w-5 opacity-70 pb-1" />
               <p className="text-sm">
-                Papers Count
+                Papers
               </p>
               <span className="text-xs text-muted-foreground">
                 999
@@ -189,7 +178,7 @@ export default function HomePage() {
             <div className="mt-2 flex flex-col items-start space-y-1">
               <FileQuestion className="h-5 w-5 opacity-70 pb-1" />
               <p className="text-sm">
-                Total Questions
+                Questions
               </p>
               <span className="text-xs text-muted-foreground">
                 99999
@@ -197,6 +186,20 @@ export default function HomePage() {
             </div>
           </HoverCardContent>
         </HoverCard>
+      </div>
+
+      <div className="py-3 pt-3 lg:pt-8 flex justify-center md:justify-start">
+            <img
+              src="/exam-logo/MHT-CET_logo.png"
+              className="w-28 h-28 mb-3"
+              alt="MHTCET Logo"
+            />
+      </div>
+
+      <div className="flex justify-center md:justify-start items-left">
+        <h1 className="text-1xl sm:text-2xl md:text-2xl font-normal">
+        MHCET Previous Year Questions
+            </h1>
       </div>
 
       <div className="flex justify-center items-center mt-5">
@@ -223,6 +226,7 @@ export default function HomePage() {
                     avatarFallback={chapter.avatarFallback}
                     title={chapter.title}
                     progress={chapter.progress}
+                    attention={chapter.attention}
                     avatarImage={chapter.avatarImage}
                   />
                 ))}
