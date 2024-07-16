@@ -87,8 +87,9 @@ mjx-container.MathJax {
 }
 
 * {
-  user-select: "";
+  user-select: none;
 }
+
 
 .mathjax-container.plain-text {
   font-weight: normal;
